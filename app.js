@@ -1,4 +1,6 @@
 require('dotenv').config()
+require('./utils/db')
+require('./models/book')
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
