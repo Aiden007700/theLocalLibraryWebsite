@@ -1,6 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const db = require('../utils/db');
+export{}
+const db = require('../utils/db')
+
 db(`
 CREATE TABLE IF NOT EXISTS Author
 (
@@ -13,9 +13,10 @@ CREATE TABLE IF NOT EXISTS Author
     lifespan      varchar(100),
     url           varchar(250)
 );
-`);
-exports.count = async (callback) => {
-    const count = await db('SELECT COUNT(*) FROM Author;');
-    console.log(1, count[0]['COUNT(*)']);
-    return count[0]['COUNT(*)'];
-};
+`)
+
+exports.count = async (callback?: () => any ): Promise<number> => {
+    const count: Promise<number> = await db('SELECT COUNT(*) FROM Author;')
+    console.log(1, count[0]['COUNT(*)'])
+    return count[0]['COUNT(*)']
+}

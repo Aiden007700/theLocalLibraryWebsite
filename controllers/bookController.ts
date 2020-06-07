@@ -1,8 +1,18 @@
+export{}
 const Book = require('../models/book');
+const Author = require('../models/author');
+const Genre = require('../models/genre');
+const BookInstance = require('../models/bookinstance');
 
-exports.index = function(req, res) {
-    res.send('NOT IMPLEMENTED: Site Home Page');
-};
+exports.index = async function(req, res) {
+    const book_count = await Book.count()
+    const book_instance_count = await BookInstance.count()
+    const book_instance_available_count = await BookInstance.countAvailable()
+    const author_count = await Author.count()
+    const genre_count = await Genre.count()
+
+    res.render('index', { title: 'Local Library Home',data: {book_count, book_instance_count, book_instance_available_count, author_count, genre_count}});
+ };
 
 // Display list of all books.
 exports.book_list = function(req, res) {
