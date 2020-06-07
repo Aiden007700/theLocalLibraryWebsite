@@ -13,8 +13,10 @@ exports.index = async function (req, res) {
     res.render('index', { title: 'Local Library Home', data: { book_count, book_instance_count, book_instance_available_count, author_count, genre_count } });
 };
 // Display list of all books.
-exports.book_list = function (req, res) {
-    res.send('NOT IMPLEMENTED: Book list');
+exports.book_list = async function (req, res) {
+    const book_list = await Book.findAll();
+    console.log(book_list);
+    res.render('book_list', { title: 'Book List', book_list });
 };
 // Display detail page for a specific book.
 exports.book_detail = function (req, res) {

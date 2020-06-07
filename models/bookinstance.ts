@@ -17,14 +17,12 @@ CREATE TABLE IF NOT EXISTS BookInstance
 
 exports.count = async (callback?: () => any ): Promise<number> => {
     const count: Promise<number> = await db('SELECT COUNT(*) FROM BookInstance;')
-    console.log(3, count[0]['COUNT(*)'])
 
     return count[0]['COUNT(*)']
 }
 
 exports.countAvailable = async (callback?: () => any ): Promise<number> => {
     const count: Promise<number> = await db("SELECT COUNT(*) FROM BookInstance WHERE status='Available';")
-    console.log(4, count[0]['COUNT(*)'])
 
     return count[0]['COUNT(*)']
 }

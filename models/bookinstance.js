@@ -16,11 +16,9 @@ CREATE TABLE IF NOT EXISTS BookInstance
 `);
 exports.count = async (callback) => {
     const count = await db('SELECT COUNT(*) FROM BookInstance;');
-    console.log(3, count[0]['COUNT(*)']);
     return count[0]['COUNT(*)'];
 };
 exports.countAvailable = async (callback) => {
     const count = await db("SELECT COUNT(*) FROM BookInstance WHERE status='Available';");
-    console.log(4, count[0]['COUNT(*)']);
     return count[0]['COUNT(*)'];
 };

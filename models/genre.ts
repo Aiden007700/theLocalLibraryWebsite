@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS BookGenres
 
 exports.count = async (callback?: () => any ): Promise<number> => {
     const count: Promise<number> = await db('SELECT COUNT(*) FROM Genres;')
-    console.log(5, count[0]['COUNT(*)'])
 
     return count[0]['COUNT(*)']
 }

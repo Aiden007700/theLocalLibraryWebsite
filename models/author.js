@@ -16,6 +16,5 @@ CREATE TABLE IF NOT EXISTS Author
 `);
 exports.count = async (callback) => {
     const count = await db('SELECT COUNT(*) FROM Author;');
-    console.log(1, count[0]['COUNT(*)']);
     return count[0]['COUNT(*)'];
 };

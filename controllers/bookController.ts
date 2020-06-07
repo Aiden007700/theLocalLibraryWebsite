@@ -15,8 +15,11 @@ exports.index = async function(req, res) {
  };
 
 // Display list of all books.
-exports.book_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book list');
+exports.book_list = async function(req, res) {
+    const book_list = await Book.findAll()
+    console.log(book_list)
+    res.render('book_list', { title: 'Book List', book_list });
+
 };
 
 // Display detail page for a specific book.

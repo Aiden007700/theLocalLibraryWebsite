@@ -17,7 +17,10 @@ CREATE TABLE IF NOT EXISTS Books
 
 exports.count = async (callback?: () => any ): Promise<number> => {
     const count: Promise<number> = await db('SELECT COUNT(*) FROM Books;')
-    console.log(2, count[0]['COUNT(*)'])
-
     return count[0]['COUNT(*)']
+}
+
+exports.findAll = async (callback?: () => any ) => {
+    const allBooks: [] = await db('SELECT * FROM Books LEFT JOIN Author ON Books.authorID = Author.authorID;')
+    return allBooks.map((el => Object.assign({}, el)))
 }
