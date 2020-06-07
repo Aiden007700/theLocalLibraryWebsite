@@ -26,3 +26,9 @@ exports.countAvailable = async (callback?: () => any ): Promise<number> => {
 
     return count[0]['COUNT(*)']
 }
+
+exports.getAll = async (callback?: () => any ) => {
+    const allBookInstance: [] = await db('SELECT * FROM BookInstance LEFT JOIN Books ON Books.bookID = BookInstance.bookID;')
+    console.log(allBookInstance.map((el => Object.assign({}, el)))
+    return allBookInstance.map((el => Object.assign({}, el)))
+}
